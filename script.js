@@ -1,25 +1,26 @@
-const card = document.querySelector(".block")
-const api = "https://dev-cabinet.seenday.com/e.scripts?page=pages:unload&event=get"
+const cardsWrapper = document.querySelector(".card-block")
+const api = "https://dev-cabinet.seenday.com/e.scripts?page=pages:unload&event=get&unload_id=2175"
 
 const endpoints = {
-date: 'api',
+data: 'api',
 status: 'api',
 id: 'api'
 }
-function dateCard(api){
-return
-   <div class="block">
-        <p>Задача выполнена: <span class="text-bold"> ${card.date}</span></p>
-        <p>Статус задачи: <span class="text-bold"> ${card.status}</span></p>
-        <p>ID выгрузки: <span class="text-bold">${card.id}</span> </p>
-    </div>
+function inch-data(api){
+return `
+   
+<div class="block">
+<div>Задача выполнена: <span class="text-bold"> ${api.data}</span></div>
+<div>Статус задачи: <span class="text-bold"> ${api.status}</span></div>
+<div>ID выгрузки: <span class="text-bold">${api.id}</span> </div>
+</div> 
+    `
 }
-
-fetch(api + endpoints.date)
+fetch(api + endpoints.data)
 .then(res => res.json())
-.then(date => {
-    date.forEch(date => {
-    card.innerHTML += dateCard(date)
-    })
+.then(data => {
+data.response.data.forEach(inch =>{
+cardsWrapper.innerHTML += inch(inch)
 
+})
 })
